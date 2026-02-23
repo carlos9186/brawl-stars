@@ -1,4 +1,5 @@
 
+
 <!DOCTYPE html>
 <html lang="it">
 <head>
@@ -6,41 +7,189 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Insegnare a giocare</title>
   <style>
-    :root { --orange: #ff7f00; --orange-2: #ff9a3c; }
-    html, body { height: 100%; margin: 0; }
-    body {
-      background: linear-gradient(180deg, var(--orange), var(--orange-2));
-      color: #fff;
-      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
+    :root{
+      --orange-1:#ff7f00; --orange-2:#ff9a3c; --text:#1a1a1a; --muted:rgba(26,26,26,0.65);
     }
-    .container {
-      max-width: 900px;
-      width: calc(100% - 2rem);
-      padding: 2rem;
-      text-align: center;
-      background: rgba(0,0,0,0.06);
-      border-radius: 12px;
-      box-shadow: 0 8px 30px rgba(0,0,0,0.18);
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, Arial;}
+    body{
+      background: linear-gradient(180deg,var(--orange-1),var(--orange-2));
+      color:#fff; -webkit-font-smoothing:antialiased; -moz-osx-font-smoothing:grayscale;
+      min-height:100%;
+      display:flex;align-items:flex-start;justify-content:center;padding:3rem 1rem;
     }
-    h1 { font-size: 2.25rem; margin: 0 0 0.5rem; text-transform: capitalize; }
-    p { font-size: 1.05rem; margin: 0; line-height: 1.5; }
-    footer { margin-top: 1.25rem; font-size: 0.9rem; opacity: 0.95; }
-    @media (max-width: 480px) {
-      h1 { font-size: 1.5rem; }
-      .container { padding: 1rem; }
+    .site{
+      width:100%;max-width:1100px;background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03));
+      border-radius:16px;padding:1.25rem;box-shadow:0 12px 40px rgba(0,0,0,0.18);
     }
+    header{display:flex;align-items:center;gap:1rem;justify-content:space-between}
+    .brand{display:flex;align-items:center;gap:.75rem}
+    .logo{width:48px;height:48px;border-radius:10px;background:rgba(255,255,255,0.15);display:flex;align-items:center;justify-content:center}
+    .logo svg{width:26px;height:26px;fill:#fff}
+    nav a{color:rgba(255,255,255,0.95);text-decoration:none;margin-left:1rem;font-weight:600}
+    .hero{display:flex;gap:2rem;align-items:center;margin-top:1rem}
+    .hero-left{flex:1}
+    h1{margin:0;font-size:2rem;line-height:1.05;color:#fff}
+    .lead{margin-top:.5rem;color:var(--muted);font-size:1rem}
+    .cta{margin-top:1rem;display:inline-flex;gap:.5rem;align-items:center;padding:.6rem 1rem;background:#fff;color:var(--text);border-radius:10px;font-weight:700;cursor:pointer;border:none}
+    .hero-right{width:300px;max-width:40%;min-width:220px}
+    .card{background:rgba(255,255,255,0.06);padding:1rem;border-radius:12px}
+
+    main{margin-top:1.25rem;display:grid;grid-template-columns:1fr 320px;gap:1rem}
+    .content{background:transparent;padding:1rem;border-radius:12px}
+    section{background:rgba(255,255,255,0.03);padding:1rem;border-radius:10px;margin-bottom:.75rem}
+    h2{margin:0 0 .5rem 0;color:#fff}
+    ul.checks{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:.5rem;list-style:none;padding:0;margin:0}
+    ul.checks li{background:rgba(0,0,0,0.06);padding:.6rem;border-radius:8px;color:#fff}
+
+    .sidebar{position:sticky;top:1rem;height:max-content}
+    .tips{display:flex;flex-direction:column;gap:.5rem}
+    .tip{background:linear-gradient(90deg,rgba(255,255,255,0.06),rgba(255,255,255,0.03));padding:.75rem;border-radius:8px}
+    .faq{margin-top:.5rem}
+    .faq h3{margin:0;font-size:1rem}
+    .faq .item{margin-top:.5rem}
+    .faq button{width:100%;text-align:left;padding:.6rem;border-radius:8px;border:none;background:rgba(0,0,0,0.04);color:#fff;cursor:pointer}
+    .faq .answer{padding:.6rem;margin-top:.25rem;background:rgba(0,0,0,0.03);border-radius:6px;display:none}
+
+    footer{margin-top:1rem;text-align:center;color:rgba(255,255,255,0.85);font-size:.95rem}
+
+    @media (max-width:880px){main{grid-template-columns:1fr} .hero{flex-direction:column} .hero-right{max-width:none;width:100%}}
   </style>
 </head>
 <body>
-  <div class="container">
-    <h1>Insegnare a giocare ai nuovi giocatori</h1>
-    <p>Benvenuto! Questa pagina è pensata per guidare i nuovi giocatori attraverso le basi del gioco: controlli, obiettivi e consigli iniziali.</p>
-    <footer>Scorri per iniziare — consigli rapidi per principianti.</footer>
+  <div class="site">
+    <header>
+      <div class="brand">
+        <div class="logo" aria-hidden>
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L15 8l6 .5-4.5 3.5L18 20 12 16l-6 4 1.5-8.0L3 8.5 9 8z"/></svg>
+        </div>
+        <div>
+          <div style="font-weight:800">Brawl Starter</div>
+          <div style="font-size:0.85rem;color:rgba(255,255,255,0.9)">Guida rapida per nuovi giocatori</div>
+        </div>
+      </div>
+      <nav aria-label="main navigation">
+        <a href="#controls">Controlli</a>
+        <a href="#strategy">Strategia</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+    </header>
+
+    <div class="hero">
+      <div class="hero-left">
+        <h1>Insegniamo ai nuovi giocatori a vincere</h1>
+        <div class="lead">Segui i passi qui sotto: controlli, obiettivi, build consigliate e strategie di squadra.</div>
+        <div>
+          <button class="cta" id="startTutorial">Avvia tutorial rapido ▶</button>
+        </div>
+      </div>
+      <div class="hero-right card">
+        <strong>Consiglio veloce</strong>
+        <p style="margin:.5rem 0 0;color:var(--muted)">Gioca con calma: impara un personaggio alla volta e concentrati sul posizionamento.</p>
+      </div>
+    </div>
+
+    <main>
+      <div class="content">
+        <section id="controls">
+          <h2>Controlli base</h2>
+          <ul class="checks">
+            <li><strong>Spostamento:</strong> usa la levetta virtuale / WASD</li>
+            <li><strong>Attacco primario:</strong> tocca per sparare normalmente</li>
+            <li><strong>Super:</strong> accumula energia e usa lo speciale con attenzione</li>
+            <li><strong>Ritirati:</strong> se sei a bassa salute, cerca copertura</li>
+          </ul>
+        </section>
+
+        <section id="strategy">
+          <h2>Strategia iniziale</h2>
+          <p>Inizia giocando partite rapide per capire le mappe. Alcuni consigli pratici:</p>
+          <ol>
+            <li>Conosci il tuo ruolo: supporto, damage, tank.</li>
+            <li>Controlla la zona: prendere il controllo del centro spesso decide la partita.</li>
+            <li>Comunica: segnala gli obiettivi e supporta i compagni in difficoltà.</li>
+          </ol>
+        </section>
+
+        <section id="build">
+          <h2>Build consigliate</h2>
+          <p>Non esiste una sola build perfetta. Prova queste combinazioni per principianti:</p>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:.5rem;margin-top:.5rem">
+            <div class="card"><strong>Aggressivo</strong><div style="color:var(--muted)">Danno alto, poca resistenza.</div></div>
+            <div class="card"><strong>Bilanciato</strong><div style="color:var(--muted)">Gioco sicuro, buon sustain.</div></div>
+            <div class="card"><strong>Support</strong><div style="color:var(--muted)">Aiuta la squadra, controllo map.</div></div>
+          </div>
+        </section>
+      </div>
+
+      <aside class="sidebar">
+        <div class="tip">
+          <strong>Inizio rapido</strong>
+          <div style="color:var(--muted);margin-top:.4rem">Se sei nuovo, gioca 10 partite di allenamento prima di entrare in competitive.</div>
+        </div>
+        <div class="tips">
+          <div class="tip">Impara 2-3 personaggi per coprire più ruoli.</div>
+          <div class="tip">Guarda replay dei giocatori esperti per studiare le rotazioni.</div>
+        </div>
+
+        <div class="faq" id="faq">
+          <h2>FAQ</h2>
+          <div class="item">
+            <button data-target="a1">Come recupero vita?</button>
+            <div id="a1" class="answer">Alcuni brawler rigenerano salute o hanno oggetti/zone sulla mappa che curano.</div>
+          </div>
+          <div class="item">
+            <button data-target="a2">Quando usare il super?</button>
+            <div id="a2" class="answer">Usalo per ribaltare gli scontri o per intrappolare nemici; evita sprecarlo su un singolo bersaglio a bassa salute.</div>
+          </div>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      Piccola guida — pronti a vincere? Visita il forum o guarda i video tutorial per approfondire.
+    </footer>
   </div>
+
+  <script>
+    // FAQ toggle
+    document.querySelectorAll('.faq button').forEach(btn=>{
+      btn.addEventListener('click',()=>{
+        const id = btn.dataset.target || btn.getAttribute('data-target');
+        const el = document.getElementById(id);
+        if(!el) return;
+        const shown = el.style.display === 'block';
+        document.querySelectorAll('.faq .answer').forEach(a=>a.style.display='none');
+        el.style.display = shown ? 'none' : 'block';
+      })
+    });
+
+    // Mini tutorial overlay
+    const tutorialSteps = [
+      'Benvenuto! Questo tutorial mostra i concetti base.',
+      'Controlli: spostati e mira con attenzione.',
+      'Strategia: non correre da solo, supporta la squadra.',
+      'Fine: gioca e divertiti. Ripeti il tutorial quando vuoi.'
+    ];
+
+    function createOverlay(){
+      const overlay = document.createElement('div');
+      overlay.id = 'tour'; overlay.style.position='fixed'; overlay.style.inset=0; overlay.style.background='rgba(0,0,0,0.6)'; overlay.style.display='flex'; overlay.style.alignItems='center'; overlay.style.justifyContent='center'; overlay.style.zIndex=9999;
+      const box = document.createElement('div'); box.style.background='#fff'; box.style.color='#111'; box.style.padding='1rem 1.25rem'; box.style.borderRadius='12px'; box.style.maxWidth='560px'; box.style.width='90%';
+      const text = document.createElement('div'); text.id='tourText'; text.style.fontSize='1rem'; text.style.marginBottom='.75rem';
+      const controls = document.createElement('div'); controls.style.display='flex'; controls.style.justifyContent='space-between';
+      const prev = document.createElement('button'); prev.textContent='← Indietro'; prev.style.padding='.5rem .75rem'; const next = document.createElement('button'); next.textContent='Avanti →'; next.style.padding='.5rem .75rem';
+      const close = document.createElement('button'); close.textContent='Chiudi'; close.style.marginLeft='.5rem';
+      controls.append(prev, next, close);
+      box.append(text, controls); overlay.append(box); document.body.append(overlay);
+      let idx=0; function render(){ text.textContent = tutorialSteps[idx]; prev.disabled = idx===0; next.textContent = idx===tutorialSteps.length-1 ? 'Fine' : 'Avanti →'; }
+      render();
+      prev.onclick=()=>{ if(idx>0) idx--, render(); };
+      next.onclick=()=>{ if(idx<tutorialSteps.length-1) idx++, render(); else overlay.remove(); };
+      close.onclick=()=>overlay.remove();
+    }
+
+    document.getElementById('startTutorial').addEventListener('click',createOverlay);
+  </script>
 </body>
 </html>
